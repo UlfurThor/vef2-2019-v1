@@ -1,0 +1,36 @@
+@import "config";
+
+.filters {
+  display: flex;
+  margin-bottom: $gutter * 2;
+  justify-content: center;
+  list-style: none;
+
+  &__filter {
+    padding: $gutter / 2 $gutter;
+    margin-right: $gutter;
+    margin-left: $gutter;
+
+    font-family: $font-heading;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+
+    background-color: #ccc;
+    border-radius: 16px;
+
+    transition: background-color 300ms ease-in-out;
+
+    &:hover {
+      background-color: #aaa;
+    }
+
+    &--active {
+      background-color: #2d2;
+
+      &:hover {
+        background-color: #1a1;
+      }
+    }
+  }
+}
