@@ -1,0 +1,31 @@
+@import "config";
+
+.list {
+  max-width: $max-width;
+  margin: 0 auto;
+
+  @media (max-width: $max-width - 1) {
+    padding-right: $gutter;
+    padding-left: $gutter;
+  }
+
+  &__row {
+    @include row;
+    margin-bottom: $gutter * 2;
+    flex-wrap: wrap;
+  }
+
+  &__col {
+    @include columns(12);
+
+    margin-bottom: $gutter * 2;
+
+    @media (min-width: 800px) {
+      @include columns(4);
+    }
+  }
+
+  &__error {
+    @include columns(12);
+  }
+}

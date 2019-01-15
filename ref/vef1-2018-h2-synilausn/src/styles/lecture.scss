@@ -1,0 +1,60 @@
+@import "config";
+
+.lecture {
+  &__content {
+    max-width: $max-width;
+    margin: 0 auto;
+
+    @media (max-width: $max-width - 1) {
+      padding-right: $gutter;
+      padding-left: $gutter;
+    }
+  }
+
+  &__row {
+    @include row;
+    margin-bottom: $gutter * 2;
+    flex-wrap: wrap;
+  }
+
+  &__col {
+    @include columns(12);
+
+    margin-bottom: $gutter * 2;
+
+    @media (min-width: 800px) {
+      @include columns(8);
+      @include offset-left(2);
+    }
+  }
+
+  &__footer {
+    display: flex;
+    margin-bottom: $gutter * 3;
+    font-family: $font-heading;
+    color: #000;
+    text-decoration: none;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__finish {
+    display: inline-block;
+    margin-bottom: $gutter * 2;
+
+    font-family: $font-heading;
+    font-size: 1rem;
+    background: inherit;
+    border: 0;
+
+    &--finished {
+      color: #2d2;
+    }
+  }
+
+  &__back {
+    font-family: $font-heading;
+    color: #000;
+    text-decoration: none;
+  }
+}
