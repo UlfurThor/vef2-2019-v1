@@ -15,5 +15,9 @@
     "eslint-plugin-import": "^2.14.0",
     "nodemon": "^1.18.9"
   },
-  "dependencies": {}
+  "dependencies": {
+    "express": "^4.16.4",
+    "jsdom": "^13.1.0",
+    "ejs": "^2.6.1"
+  }
 }
