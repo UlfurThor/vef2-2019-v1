@@ -19,19 +19,30 @@ app.set('view engine', 'ejs');
 
 
 app.get('/', (req, res) => {
-  console.log('1');
+  console.log('--- page> index');
   // `title` verður aðgengilegt sem breyta í template
-  res.render('index', { title: 'Forsíða' });
+  res.render('index', {
+    title: 'Forsíða',
+  });
 });
 
-app.get('/about', (req, res) => {
-  console.log('2');
+app.get('/fyrirlestur', (req, res) => {
+  if (req.query.slug !== undefined) {
+    console.log(`--- page> fyrirlestur ?= ${req.query.slug}`);
+  } else {
+    console.log('--- page> fyrirlestur');
+  }
   const staff = ['Jón', 'Gunna'];
   const extra = '<p><strong>Þessi síða er í vinnslu</strong></p>';
 
   // Getum sent eins mikið og við viljum af gögnum til template gegnum hlut
-  res.render('about', { title: 'Um', staff, extra });
+  res.render('about', {
+    title: 'Um',
+    staff,
+    extra,
+  });
 });
+
 
 const hostname = '127.0.0.1';
 const port = 3000;
