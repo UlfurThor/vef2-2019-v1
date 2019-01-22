@@ -6,6 +6,7 @@ Keyrir upp vef með express sem notar ejs template fyrir síður á / og /about
 */
 const express = require('express');
 const path = require('path');
+const lect = require('./lectures');
 
 const app = express();
 
@@ -17,18 +18,24 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'public/views'));
 app.set('view engine', 'ejs');
 
+app.use('/', lect);
 
+/*
 app.get('/', (req, res) => {
   console.log('--- page> index');
   // `title` verður aðgengilegt sem breyta í template
   res.render('index', {
     title: 'Forsíða',
+    header_type: 'heading--main',
+    page_type: 'index',
   });
 });
 
 app.get('/fyrirlestur', (req, res) => {
+  let pageTitle = 'fyrirlestur';
   if (req.query.slug !== undefined) {
-    console.log(`--- page> fyrirlestur ?= ${req.query.slug}`);
+    console.log(`--- page> fyrirlestur: slug = ${req.query.slug}`);
+    pageTitle = req.query.slug;
   } else {
     console.log('--- page> fyrirlestur');
   }
@@ -37,12 +44,13 @@ app.get('/fyrirlestur', (req, res) => {
 
   // Getum sent eins mikið og við viljum af gögnum til template gegnum hlut
   res.render('about', {
-    title: 'Um',
+    title: pageTitle,
     staff,
     extra,
+    header_type: '',
   });
 });
-
+*/
 
 const hostname = '127.0.0.1';
 const port = 3000;
