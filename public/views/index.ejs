@@ -1,8 +1,15 @@
 <%- include('header') -%>
+<main>
+  <ul class="filters">
+    <li><button data-category="html" class="filters__filter filters__filter--html">HTML</button></li>
+    <li><button data-category="css" class="filters__filter filters__filter--css">CSS</button></li>
+    <li><button data-category="javascript" class="filters__filter filters__filter--js">JavaScript</button></li>
+  </ul>
 
-<p>Halló heimur!</p>
-<p><%= locals.foo('baz'); %></p>
-<p><a href="/fyrirlestur">Lestu um okkur.</a></p>
-<%= lectures; %>
-
+  <div class="list">
+    <div class="list__row">
+      <%- lectures; %>
+    </div>
+  </div>
+</main>
 <%- include('footer') -%>
