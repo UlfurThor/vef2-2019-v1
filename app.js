@@ -20,37 +20,18 @@ app.set('view engine', 'ejs');
 
 app.use('/', lect);
 
-/*
-app.get('/', (req, res) => {
-  console.log('--- page> index');
-  // `title` verður aðgengilegt sem breyta í template
-  res.render('index', {
-    title: 'Forsíða',
-    header_type: 'heading--main',
-    page_type: 'index',
-  });
-});
 
-app.get('/fyrirlestur', (req, res) => {
-  let pageTitle = 'fyrirlestur';
-  if (req.query.slug !== undefined) {
-    console.log(`--- page> fyrirlestur: slug = ${req.query.slug}`);
-    pageTitle = req.query.slug;
-  } else {
-    console.log('--- page> fyrirlestur');
-  }
-  const staff = ['Jón', 'Gunna'];
-  const extra = '<p><strong>Þessi síða er í vinnslu</strong></p>';
+function notFoundHandler(req, res) {
+  res.status(404).send('404 Not Found');
+}
 
-  // Getum sent eins mikið og við viljum af gögnum til template gegnum hlut
-  res.render('about', {
-    title: pageTitle,
-    staff,
-    extra,
-    header_type: '',
-  });
-});
-*/
+function errorHandler(err, req, res) {
+  console.error(err);
+  res.status(500).send('Villa!');
+}
+
+app.use(notFoundHandler);
+app.use(errorHandler);
 
 const hostname = '127.0.0.1';
 const port = 3000;
