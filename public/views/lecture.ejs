@@ -1,14 +1,12 @@
 <%- include('header') -%>
 
-<p>Hjá okkur starfa:</p>
-<ul>
-  <% staff.forEach((staff) => { %>
-    <li><%= staff %></li>
-  <% }) %>
-</ul>
+<body class="lecture-page">
+  <main>
+    <section class="lecture">
 
-<% if (typeof extra !== 'undefined') { %>
-  <%- extra %>
-<% } %>
+    </section>
+  </main>
+  <script src="./dist/bundle.js"></script>
+</body>
 
 <%- include('footer') -%>

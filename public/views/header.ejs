@@ -1,15 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title><%= title %></title>
+  <title>
+    <%= heading__title %>
+  </title>
   <link href="https://fonts.googleapis.com/css?family=Lora:400,400i|Roboto+Mono:400,700" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-  <header class="heading <%= header_type %>">
-    <span class="heading__category">Vefforritun</span>
-    <h1 class="heading__title"><%= title %></h1>
+  <header class="<%= heading__class %>" style="background-image: url(" <%- backgroundImage _%>");"
+
+
+    >
+    <span class="heading__category">
+      <%= heading__category %></span>
+    <h1 class="heading__title">
+      <%= heading__title %>
+    </h1>
   </header>

@@ -86,61 +86,79 @@ function renderLectures(data) {
   const row = el('div', ...items);
   row.classList.add('list__row');
   return row;
-  // this.setContent(row);
 }
 
 
 const filepath = 'lectures.json';
 
 async function list(req, res) {
-  /* todo útfæra */
-
+  console.log('--- page> index');
   const dataRaw = await readFileAsync(filepath);
   const data = JSON.parse(dataRaw.toString('utf8')).lectures;
 
   const wrapper = renderLectures(data);
-  /*
-    // jsdom útfærir DOM staðal
-    wrapper.classList.add('reciepe');
-    wrapper.dataset.foo = 'bar';
 
-    const ul = document.createElement('ol');
-
-    console.log('asdasd');
-    data.forEach((lect) => {
-      console.log(lect.slug);
-      const li = document.createElement('li');
-      li.appendChild(document.createTextNode(lect.slug));
-      ul.appendChild(li);
-    });
-
-    wrapper.appendChild(ul);
-  */
-  const sluglist = data.map((lect) => {
-    return lect.slug;
-  });
-
-  console.log(wrapper);
-
-  console.log('--- page> index');
   // `title` verður aðgengilegt sem breyta í template
   res.render('index', {
-    title: 'Forsíða',
-    header_type: 'heading--main',
+    heading__title: 'Forsíða',
+    heading__category: 'Vefforritun',
+    heading__class: 'heading heading--main',
     page_type: 'index',
     lectures: wrapper.outerHTML,
   });
 }
 
+function createHeader(data) {
+  const category = el('span', data.category);
+  category.classList.add('heading__category');
+  const headingElement = el('h2', data.title);
+  headingElement.classList.add('heading__title');
+  const headingWrapper = el('div', category, headingElement);
+  headingWrapper.classList.add('heading');
+
+  if (data.image) {
+    headingWrapper.style.backgroundImage = `url(${data.image})`;
+  }
+
+  return headingWrapper;
+}
+
 async function lecture(req, res, next) {
-  /* todo útfæra */
-  console.log(`--- page> fyrirlestur: slug = ${req.params.slug}`);
+  const {
+    slug,
+  } = req.params;
+  console.log(`--- page> fyrirlestur: slug = ${slug}`);
+
+  if (slug === 'favicon.ico') {
+    return;
+  }
+
+  const dataRaw = await readFileAsync(filepath);
+  const data = JSON.parse(dataRaw.toString('utf8')).lectures;
+
+  const found = data.find(i => i.slug === slug);
+
+  if (!found) {
+    throw new Error('Fyrirlestur fannst ekki');
+  }
+
+  const header = createHeader(data);
+  console.log(header.outerHTML);
+  //const content = createContent(data.content);
+  //const footer = createFooter(data.slug, false);
 
   const staff = ['Jón', 'Gunna'];
   const extra = '<p><strong>Þessi síða er í vinnslu</strong></p>';
 
+
   // Getum sent eins mikið og við viljum af gögnum til template gegnum hlut
-  res.render('about', {
+  console.log(found.image);
+  res.render('lecture', {
+    gen_header: header.outerHTML,
+    heading__title: found.title,
+    heading__category: found.category,
+    heading__class: 'heading',
+    backgroundImage: found.image,
     title: req.params.slug,
     staff,
     extra,
