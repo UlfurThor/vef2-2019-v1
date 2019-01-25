@@ -10,9 +10,6 @@ const lect = require('./lectures');
 
 const app = express();
 
-// Þetta verður aðgengilegt gegnum `local.bar` í template
-app.locals.foo = bar => `foo ${bar}!`;
-
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.set('views', path.join(__dirname, 'views'));
