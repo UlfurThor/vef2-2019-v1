@@ -170,6 +170,6 @@ function createFooter(slug, finished) {
   return footer;
 }
 
-module.exports = function (data) {
+module.exports = function buildPage(data) {
   return [createContent(data), createFooter(data.slug, false)];
 };

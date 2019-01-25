@@ -19,6 +19,7 @@ function catchErrors(fn) {
 const filepath = 'lectures.json';
 
 async function list(req, res) {
+  // eslint-disable-next-line no-console
   console.log('--- page> index');
   const dataRaw = await readFileAsync(filepath);
   const data = JSON.parse(dataRaw.toString('utf8')).lectures;
@@ -44,6 +45,7 @@ async function lecture(req, res, next) {
     next();
     return;
   }
+  // eslint-disable-next-line no-console
   console.log(`--- page> fyrirlestur: slug = ${slug}`);
 
   const dataRaw = await readFileAsync(filepath);

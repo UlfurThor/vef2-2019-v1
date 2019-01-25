@@ -74,6 +74,6 @@ function renderLectures(data) {
   return row;
 }
 
-module.exports = function (data) {
+module.exports = function buildPage(data) {
   return renderLectures(data);
 };

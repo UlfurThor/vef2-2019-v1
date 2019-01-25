@@ -14,13 +14,14 @@
 
 <body>
   <% if (typeof backgroundImage !== 'undefined') { %>
-<header class="<%= heading__class %>" style="background-image: url(<%- backgroundImage %>);">
-    <% } else {%>
+    <header class="<%= heading__class %>" style="background-image: url(<%- backgroundImage %>);">
+  <% } else {%>
     <header class="<%= heading__class %>">
-      <% }%>
-      <span class="heading__category">
-        <%= heading__category %></span>
-      <h1 class="heading__title">
-        <%= heading__title %>
-      </h1>
+  <% }%>
+  <span class="heading__category">
+    <%= heading__category %>
+  </span>
+  <h1 class="heading__title">
+    <%= heading__title %>
+  </h1>
     </header>

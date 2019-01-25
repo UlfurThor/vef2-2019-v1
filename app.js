@@ -1,9 +1,3 @@
-/*
-Keyrt með:
-node 09.template-ejs.js
-
-Keyrir upp vef með express sem notar ejs template fyrir síður á / og /about
-*/
 const express = require('express');
 const path = require('path');
 const lect = require('./lectures');
@@ -34,5 +28,6 @@ const hostname = '127.0.0.1';
 const port = 3000;
 
 app.listen(port, hostname, () => {
+  // eslint-disable-next-line no-console
   console.log(`Server running at http://${hostname}:${port}/`);
 });
